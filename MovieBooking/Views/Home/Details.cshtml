@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ScreenViewModel>
+
+<h2>Movie Details</h2>
+<p><strong>Movie Name:</strong> @Model.FirstOrDefault()?.Movie.MovieName</p>
+<p><strong>Genre:</strong> @Model.FirstOrDefault()?.Movie.Genre</p>
+<p><strong>Time:</strong> @Model.FirstOrDefault()?.Movie.Time</p>
+
+<h2>Theatre List</h2>
+@foreach (var theaterGroup in Model.GroupBy(s => s.TheatreId))
+{
+    var theater = theaterGroup.First().Theatre;
+    var screens = theaterGroup.ToList();
+
+    <div class="theatre-container">
+        <h3>@theater.TheatreName</h3>
+        <div class="showtime-grid">
+            @foreach (var screen in screens)
+            {
+                <div class="showtime-column">
+                    <button class="showtime-button">
+                        @foreach (var showtime in screen.ShowTime)
+                        {
+                            <a href="#" class="showtime-link" data-id="@screen.Id" data-remainingSeats="@screen.RemainingSeats">@showtime</a>
+                            <br />
+                        }
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+}
+<div class=" modal fade modal" id="detailModal">
+    <div class=" modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-info modal-title" id="addScreen">Book Tickets</h2> 
+            </div>
+            <div class="modal-header">
+                <h6 class="text-info modal-title" id="RemainingSeats"></h6>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="detailsForm">
+                    <div class="mb-3">
+                        <input id="BookingId" type="hidden" />
+                        <label for="ticketQuantity" class="form-label">Ticket Quantity</label>
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary" type="button" id="decrement-btn">-</button>
+                            <input type="text" class="form-control text-center" id="ticketQuantity" name="ticketQuantity" value="1" readonly>
+                            <button class="btn btn-outline-secondary" type="button" id="increment-btn">+</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="bookTickets">Book</button>
+                <button class="btn btn-danger btn-default" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="bookingModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-info modal-title" id="addScreen">Booking Confirmation</h2>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-default" id="closeBookingModal" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/js/Booking.js"></script>
+}

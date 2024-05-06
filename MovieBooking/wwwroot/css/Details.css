@@ -1,0 +1,24 @@
+﻿/* styles.css */
+.theatre-container {
+    border: 2px solid #000; /* Add border with 2px width and black color */
+    margin-bottom: 20px; /* Add some space between theatre containers */
+    padding: 10px; /* Add padding inside theatre containers */
+}
+
+.showtime-column {
+    margin-bottom: 10px; /* Add some space between showtime buttons */
+}
+
+.showtime-button {
+    display: inline-block; /* Ensure button is displayed inline */
+    padding: 5px 10px; /* Add padding to button */
+    border: 1px solid #ccc; /* Add border to button */
+    border-radius: 5px; /* Add border radius to button */
+    background-color: #f0f0f0; /* Set background color of button */
+    text-decoration: none; /* Remove underline from anchor tag */
+    color: #333; /* Set text color */
+}
+
+    .showtime-button:hover {
+        background-color: #e0e0e0; /* Change background color on hover */
+    }

@@ -1,0 +1,98 @@
+﻿@model Screen
+
+<div class="card shadow border-0 mt-3  pb-3">
+    <div class="card-header bg-secondary bg-gradient m-lg-1 py-3 ">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2"> Screen Manager</h2>
+            </div>
+        </div>
+    </div>
+    <div class=" card-body   p-5">
+        <div class=" row">
+            <div class=" col-12 text-end pb-3">
+                <button class=" btn btn-dark" id="btnAdd">
+                    <i class="bi bi-patch-plus"></i> Create New Screen
+                </button>
+            </div>
+        </div>
+        <div class=" container-fluid">
+            <table id="tblDB" class=" table table-hover table-bordered px-5 " style="width:100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Screen Id
+                        </th>
+                        <th>
+                            Movie Name
+                        </th>
+                        <th>
+                            Theatre Name
+                        </th>
+                        <th>
+                            Total Seats
+                        </th>
+                        <th>
+                            Show Time
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tblData"></tbody>
+            </table>
+            <div class=" modal fade modal" id="userModal">
+                <div class=" modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="text-info modal-title" id="addScreen">Add Screen</h2>
+                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" id="countryForm">
+                                <input id="Id" hidden />
+                                <div class="form-group mt-2">
+                                    <label>Screen Id</label>
+                                    <input type="text" class="form-control" id="screenId" />
+                                </div>
+                                <div class="form-group pb-3">
+                                    <div class="form-group pb-3">
+                                        <label>Select Theatre</label>
+                                        <select class="form-control" id="theatre"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group pb-3">
+                                    <div class="form-group pb-3">
+                                        <label>Select Movie</label>
+                                        <select class="form-control" id="movie"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Total Seats</label>
+                                    <input type="text" class="form-control" id="totalseats" />
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Select Showtime:</label>
+                                    <input type="datetime-local" id="showtimeInput" name="showtimeInput">
+                                </div>
+                                
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button class="btn btn-primary" onclick="AddScreen();" id="AddData">Create</button>
+                            <button class="btn btn-warning" onclick="UpdateScreen();" style="display:none" id="UpdateData">Update</button>
+
+                            <button class="btn btn-danger btn-default" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/js/Screen.js"></script>
+}

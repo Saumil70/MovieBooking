@@ -1,0 +1,17 @@
+﻿@model BookingDetailsViewModel
+
+<h2>Booking Confirmation</h2>
+
+<div>
+    <h4>Booking Details</h4>
+    <ul>
+        <li><strong>Screen ID:</strong> @Model.Screen.ScreenId</li>
+        <li><strong>Total Seats Selected:</strong> @Model.TotalSeatSelected</li>
+        <li><strong>Amount:</strong> @Model.Amount</li>
+        <li><strong>Show Time:</strong> @Model.Screen.Showtime</li>
+        <li><strong>Movie Name:</strong> @Model.Movie.MovieName</li>
+        <li><strong>Theatre Name:</strong> @Model.Theatre.TheatreName</li>
+    </ul>
+</div>
+
+<p>Your booking has been confirmed successfully. Thank you!</p>
